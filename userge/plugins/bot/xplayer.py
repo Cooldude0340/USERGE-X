@@ -624,7 +624,7 @@ if userge.has_bot:
 
 
 @userge.on_cmd(
-    "joinvc",
+    "join",
     about={
         "header": "Join voice chat",
         "description": "Join voice chat in current group.",
@@ -640,18 +640,18 @@ async def join_voice_chat(m: Message, gc: XPlayer):
             await m.edit("Already in Voice Chat !", del_in=5)
         else:
             await gc.join()
-            await m.edit("**Joined** Voice Chat Successfully.", del_in=3)
+            await m.edit("**Joined** Voice Chat Successfully 🌝.", del_in=3)
     except RuntimeError:
         await m.err("No Voice Chat Found, start one first !")
 
 
 @userge.on_cmd(
-    "skipvc",
+    "skip",
     about={
         "header": "Skip [n] songs",
         "description": "Skip current playing song",
-        "usage": "{tr}skipvc [number of songs to skip]",
-        "examples": "{tr}skipvc or {tr}skipvc 5",
+        "usage": "{tr}skip [number of songs to skip]",
+        "examples": "{tr}skip or {tr}skip 5",
     },
     allow_private=False,
     allow_bots=False,
@@ -680,13 +680,13 @@ async def skip_song_voice_chat(m: Message, gc: XPlayer):
 
 
 @userge.on_cmd(
-    "playvc",
+    "play",
     about={
         "header": "Play song in voice chats",
         "description": "Play Songs in VC by audio file / media group or song name or song URL"
         "\n(supports spotify, youtube, deezer links etc.)",
-        "usage": "{tr}playvc [reply to audio msg / Media group | song name | URL]",
-        "examples": "{tr}playvc Beliver OR {tr}playvc [reply to audio file]",
+        "usage": "{tr}play [reply to audio msg / Media group | song name | URL]",
+        "examples": "{tr}play Beliver OR {tr}play [reply to audio file]",
     },
     filter_me=False,
     check_client=True,
@@ -703,13 +703,13 @@ async def play_voice_chat(m: Message, gc: XPlayer):
             m.from_user.id in Config.OWNER_ID
             or (
                 (m.from_user.id in Config.SUDO_USERS)
-                and ("playvc" in Config.ALLOWED_COMMANDS)
+                and ("play" in Config.ALLOWED_COMMANDS)
             )
         )
         and m.chat.id not in VC_GROUP_MODE_CHATS
     ):
         return
-    await m.edit("`Processing ...`")
+    await m.edit("`Processing ...🌀`")
     reply = m.reply_to_message
     playlist = gc.playlist
     if reply and reply.media_group_id:
@@ -804,13 +804,13 @@ async def play_voice_chat(m: Message, gc: XPlayer):
 
 
 @userge.on_cmd(
-    "stopvc",
+    "stop",
     about={
         "header": "Leave the fun.",
         "description": "Leave voice chat in current group.",
-        "usage": "{tr}stopvc just use it.",
+        "usage": "{tr}stop just use it.",
         "flags": {"-all": "stop all active voice chats"},
-        "examples": "{tr}stopvc",
+        "examples": "{tr}stop",
     },
     allow_private=False,
     allow_bots=False,
@@ -832,16 +832,16 @@ async def stop_voice_chat(m: Message, gc: XPlayer):
         await m.edit("Sending signal.SIGTERM...")
         await kill_radio(m.chat.id)
         await gc.leave()
-    await m.edit("Stopped Successfully.")
+    await m.edit("Stopped Successfully 🤧.")
 
 
 @userge.on_cmd(
-    "pausevc",
+    "pause",
     about={
         "header": "Silence for a moment !",
         "description": "Pause current playing song.",
-        "usage": "{tr}pausevc just use it.",
-        "examples": "{tr}pausevc",
+        "usage": "{tr}pause just use it.",
+        "examples": "{tr}pause",
     },
     allow_private=False,
     allow_bots=False,
@@ -854,12 +854,12 @@ async def pause_voice_chat(m: Message, gc: XPlayer):
 
 
 @userge.on_cmd(
-    "resumevc",
+    "resume",
     about={
         "header": "Let the sound begin !",
         "description": "Resume current paused song.",
-        "usage": "{tr}pausevc just use it.",
-        "examples": "{tr}pausevc",
+        "usage": "{tr}pause just use it.",
+        "examples": "{tr}pause",
     },
     allow_private=False,
     allow_bots=False,
@@ -872,12 +872,12 @@ async def resume_voice_chat(m: Message, gc: XPlayer):
 
 
 @userge.on_cmd(
-    "mutevc",
+    "mute",
     about={
         "header": "Shhhh stay silent.",
         "description": "Mute voice chat.",
-        "usage": "{tr}mutevc just use it.",
-        "examples": "{tr}mutevc",
+        "usage": "{tr}mute just use it.",
+        "examples": "{tr}mute",
     },
     allow_private=False,
     allow_bots=False,
