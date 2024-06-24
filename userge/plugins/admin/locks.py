@@ -143,7 +143,8 @@ async def lock_perm(message: Message):
             )
         except Exception as e_f:
             await message.edit(
-                r"`i don't have permission to do that ＞︿＜`\n\n" f"**ERROR:** `{e_f}`",
+                r"`i don't have permission to do that ＞︿＜`\n\n"
+                f"**ERROR:** `{e_f}`",
                 del_in=5,
             )
         return
@@ -253,7 +254,8 @@ async def unlock_perm(message: Message):
             )
         except Exception as e_f:
             await message.edit(
-                r"`i don't have permission to do that ＞︿＜`\n\n" f"**ERROR:** `{e_f}`",
+                r"`i don't have permission to do that ＞︿＜`\n\n"
+                f"**ERROR:** `{e_f}`",
                 del_in=5,
             )
         return

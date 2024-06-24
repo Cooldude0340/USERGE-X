@@ -404,7 +404,9 @@ def control_pannel():
         ],
         [
             InlineKeyboardButton("🗒  View Playlist", callback_data="vc_plyr_playlist"),
-            InlineKeyboardButton("🚮  Clear Playlist", callback_data="vc_plyr_clearall"),
+            InlineKeyboardButton(
+                "🚮  Clear Playlist", callback_data="vc_plyr_clearall"
+            ),
         ],
     ]
     return "🎵  **PLAYER**", buttons
@@ -460,9 +462,11 @@ async def append_playlist(gc: XPlayer, m: Message, media_grp: bool, **kwargs) ->
             "has_bot": m.client.is_bot,
             "msg": kwargs["audio_msg"],
             "yt_url": kwargs["yt_id"],
-            "by_user": (await userge.get_user_dict(m.from_user, attr_dict=True)).mention
-            if m.from_user
-            else None,
+            "by_user": (
+                (await userge.get_user_dict(m.from_user, attr_dict=True)).mention
+                if m.from_user
+                else None
+            ),
         }
     )
 
